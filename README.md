@@ -1231,7 +1231,3 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 **Empowering researchers worldwide to monitor ocean health, one plankton at a time.** 🌊🔬
 
 ---
-
-
-
-**Questions? Reach out to us at otarisamarth49@gmail.com** 📧
