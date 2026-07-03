@@ -1,0 +1,16 @@
+# TSV to YOLO Converter Requirements
+
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+tqdm>=4.65.0
+
+# YOLO training
+ultralytics>=8.0.0
+
+# Image processing
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# Optional: For visualization
+matplotlib>=3.7.0

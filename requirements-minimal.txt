@@ -1,0 +1,28 @@
+# Minimal Docker requirements for Plankton Detection App
+# Optimized for Raspberry Pi - excludes LangChain/SQL chat dependencies
+# This reduces image size by ~800MB-1GB
+
+# Streamlit and web framework
+streamlit>=1.28.0
+
+# Image processing
+pillow>=10.0.0
+opencv-python-headless>=4.8.0
+
+# Data processing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.17.0
+
+# Progress bars
+tqdm>=4.67.0
+
+# System utilities
+psutil>=5.9.0
+
+# Note: PyTorch is installed separately in Dockerfile
+# Note: LangChain dependencies are EXCLUDED for minimal image
+# If you need SQL chat feature, use requirements-docker.txt instead

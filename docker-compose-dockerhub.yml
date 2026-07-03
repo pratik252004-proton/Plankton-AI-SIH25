@@ -1,0 +1,114 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # Main Plankton App (Streamlit + ML)
+  # ==========================================
+  plankton-app:
+    image: YOUR_DOCKERHUB_USERNAME/plankton-app:minimal-arm64
+    container_name: plankton-detection
+    restart: unless-stopped
+    
+    ports:
+      - "8501:8501"
+    
+    volumes:
+      # Persist database across container restarts
+      - ./database:/app/database
+      # Persist uploaded files
+      - ./uploads:/app/uploads
+      # Mount model checkpoints
+      - ./checkpoints:/app/checkpoints
+    
+    environment:
+      # Streamlit configuration
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+      
+      # Python configuration
+      - PYTHONUNBUFFERED=1
+      
+      # SQL Agent service URL
+      - SQL_AGENT_URL=http://sql-agent:8002
+    
+    # Resource limits (adjust based on your Raspberry Pi model)
+    deploy:
+      resources:
+        limits:
+          memory: 2500M
+        reservations:
+          memory: 1G
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    networks:
+      - plankton-network
+
+  # ==========================================
+  # SQL Agent Service
+  # ==========================================
+  sql-agent:
+    image: YOUR_DOCKERHUB_USERNAME/plankton-sql-agent:arm64
+    container_name: plankton-sql-agent
+    restart: unless-stopped
+    
+    ports:
+      - "8002:8002"
+    
+    volumes:
+      # Share database with main app (read-only for safety)
+      - ./database:/app/database:ro
+    
+    environment:
+      # Groq API key (REQUIRED - set in .env file)
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    networks:
+      - plankton-network
+
+networks:
+  plankton-network:
+    driver: bridge
+
+# ==========================================
+# Usage Instructions
+# ==========================================
+# 
+# 1. Replace YOUR_DOCKERHUB_USERNAME with your actual Docker Hub username
+# 
+# 2. Create .env file with:
+#    GROQ_API_KEY=your_groq_api_key_here
+#
+# 3. Run:
+#    docker-compose up -d
+#
+# 4. View logs:
+#    docker-compose logs -f
+#
+# 5. Stop:
+#    docker-compose down
+#

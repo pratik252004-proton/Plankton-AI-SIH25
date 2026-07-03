@@ -1,0 +1,5 @@
+# SQL Agent Dependencies
+langchain>=0.1.0
+langchain-community>=0.0.20
+langchain-groq>=0.0.1
+langgraph>=0.0.20

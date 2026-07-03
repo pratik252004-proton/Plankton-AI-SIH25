@@ -1,0 +1,111 @@
+# ===================================
+# Python
+# ===================================
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ===================================
+# Streamlit
+# ===================================
+.streamlit/
+streamlit.log
+streamlit_cache/
+
+# ===================================
+# Machine Learning Models (LARGE FILES)
+# ===================================
+# PyTorch models
+*.pth
+*.pt
+*.ckpt
+
+# ONNX models
+*.onnx
+*.onnx.data
+
+# TensorFlow models
+saved_model_tf/
+*.pb
+*.h5
+
+# Model checkpoints (keep directory structure, ignore files)
+checkpoints/*.pth
+checkpoints/*.pt
+best_model.pth
+
+# ===================================
+# Datasets (VERY LARGE FILES)
+# ===================================
+# Large TSV/CSV datasets
+101138.tsv
+101139.csv
+101140.csv
+
+# Dataset archives
+101141.zip
+101141/
+
+# ===================================
+# Databases
+# ===================================
+# SQLite databases (generated at runtime)
+database/*.db
+database/*.db-journal
+*.sqlite
+*.sqlite3
+
+# Keep database directory structure
+!database/.gitkeep
+
+# ===================================
+# Docker
+# ===================================
+# Docker images (very large)
+*.tar
+*.tar.gz
+plankton-app-*.tar
+
+# ===================================
+# Documentation PDFs
+# ===================================
+*.pdf
+
+# ===================================
+# IDE / Editor
+# ===================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ===================================
+# Jupyter Notebooks (checkpoints)
+# ===================================
+.ipynb_checkpoints/
+
+# ===================================
+# Temporary / Test Files
+# ===================================
+test_counts.csv
+*.tmp
+*.log
+
+# ===================================
+# OS
+# ===================================
+Thumbs.db
+.DS_Store
+
+.env.example

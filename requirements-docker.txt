@@ -1,0 +1,31 @@
+# Docker-optimized requirements for Streamlit Plankton Detection App
+# This file contains only the packages needed to RUN the app (not train models)
+
+# Streamlit and web framework
+streamlit>=1.28.0
+
+# Image processing
+pillow>=10.0.0
+opencv-python-headless>=4.8.0
+
+# Data processing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.17.0
+
+# Progress bars
+tqdm>=4.67.0
+
+# System utilities
+psutil>=5.9.0
+
+# LangChain for SQL chat agent (required for chat feature)
+langchain>=0.1.0
+langchain-groq>=0.0.1
+langchain-community>=0.0.1
+
+# Note: PyTorch is installed separately in Dockerfile
+# Note: TensorFlow/ONNX tools are NOT needed for inference, only for model conversion
