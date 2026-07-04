@@ -1176,13 +1176,9 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 ## 📞 Contact
 
 **Project Team:**
-- GitHub: [github.com/samarth49/SIH2025](https://github.com/samarth49/SIH2025)
-- Email: otarisamarth49@gmail.com
 - Website: https://plankton-detection.com
 
 **For Support:**
-- Issues: [GitHub Issues](https://github.com/samarth49/SIH2025/issues)
-- Discussions: [GitHub Discussions](https://github.com/samarth49/SIH2025/discussions)
 - Documentation: [docs.plankton-detection.com](https://docs.plankton-detection.com)
 
 ---
